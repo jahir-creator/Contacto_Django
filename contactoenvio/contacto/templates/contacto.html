@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+</head>
+<body>
+    <main>
+        <div class="centrado">
+            <div class="contenedor-popup" id="popup">
+                <div class="ima">
+                    <div class="grid">
+                        <div class="cerrar">
+                            <div class="btn-cerrar">
+                            <a href="javascript:cerrar()"><img src="../static/imagenes/catrina.png" alt=""></a>
+                        </div>
+                        <div class="texto-informativo">
+                            <p>PARA CERRAR OPRIME LA CATRINA</p>
+                        </div>
+                        </div>
+                        <div class="ms">
+                            {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                <h3>¡GRACIAS POR CONTACTARME!</h3>
+                                <p>TU CORREO SE ENVIO EXITOSAMENTE!!</p>
+                                <P>ME CONTACTARE CONTIGO EN LA BREVEDAD POSIBLE</P>
+                                <p>¡EXCELENTE DIA!</p>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contenedor">
+            <div class="contenedorgrid">
+                <form action="/contactar/" method="post"> {% csrf_token %}
+                    <div class="dato">
+                        <label for="asunto">ASUNTO:</label>
+                        <input type="text" name="asunto" id="asunto">
+                        {{ formulario.asunto.errors }}
+                    </div>
+                    <div class="dato">
+                        <label for="correo">CORREO:</label>
+                        <input type="text" name="correo" id="correo" placeholder="ejemplo@ejemplo.com">
+                        {{ formulario.correo.errors }}
+                    </div>
+                    <div class="dato">
+                        <label for="mensaje">MENSAJE:</label>
+                        <textarea name="mensaje" id="mensaje" cols="30" rows="10"  placeholder="Mensaje:&#10;Empresa:&#10;Teléfono:"></textarea>
+                        {{ formulario.mensaje.errors }}
+                    </div>
+                    <div>
+                        <input type="submit" value="ENVIAR" class="btn">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+    </main>
+    <script>
+        function abrir() {
+            document.getElementById("popup").style.display = "block"
+        }
+        function cerrar() {
+            document.getElementById("popup").style.display = "none"
+        }
+        window.addEventListener("DOMContentLoaded", function () {
+            var messagesElement = document.querySelector(".messages");
+
+            // Verificar si el elemento de mensajes existe y contiene mensajes
+            if (messagesElement && messagesElement.children.length > 0) {
+                abrir();
+            }
+        });
+    </script>
+</body>
+</html>
