@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-18f)(+_!0h3%vkm^(zk(0+sl4!#c!*=yne)u&hq^-$=n6-sxsa
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'jahir-flores-reyes.duckdns.org']
 
 
 # Application definition
@@ -144,4 +145,4 @@ EMAIL_HOST="smtp.gmail.com"
 EMAIL_USE_TLS=True
 EMAIL_PORT=587
 EMAIL_HOST_USER="ingjahircontactoportafolio@gmail.com"
-EMAIL_HOST_PASSWORD="zaujqwgjeoocsasa "
+EMAIL_HOST_PASSWORD=" "
